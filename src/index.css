@@ -1,1 +1,53 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap');
+
+@theme {
+  --color-brand-violet: #862586;
+  --color-brand-violet-deep: #2A0B2C;
+  --color-brand-violet-mid: #5C1560;
+  --color-brand-amber: #E8A33D;
+  --color-brand-papier: #FAF7F9;
+  --color-brand-encre: #1A1418;
+  --color-brand-gris: #6E6472;
+  --color-brand-ligne: rgba(134, 37, 134, 0.18);
+
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-corps: 'Newsreader', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+:root {
+  font-family: var(--font-corps);
+  color: var(--color-brand-encre);
+  background-color: var(--color-brand-papier);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Typography Helpers aligned with design */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-corps {
+  font-family: var(--font-corps);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Specific custom underline effect from document */
+.constat-highlight {
+  font-weight: 500;
+  color: #862586;
+  background: linear-gradient(transparent 62%, rgba(232, 163, 97, 0.35) 62%);
+}
