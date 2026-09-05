@@ -35,7 +35,7 @@ function App() {
             <Route path="/notre-methode" element={<Methode />} />
             <Route path="/formation" element={<Formation />} />
             <Route path="/contact" element={<Contact />} />
-            {/* Fallback redirect */}
+
             <Route path="*" element={<Home />} />
           </Routes>
         </main>

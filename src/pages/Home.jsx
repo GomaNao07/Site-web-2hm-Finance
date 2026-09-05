@@ -2,35 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot';
 
+
 export default function Home() {
   return (
     <div>
       {/* HERO SECTION */}
       <section className="bg-[#2A0B2C] text-[#FBF4FB] relative overflow-hidden">
-        <svg 
-          className="absolute inset-0 z-0 opacity-55 w-full h-full object-cover pointer-events-none" 
-          viewBox="0 0 1200 620" 
-          preserveAspectRatio="xMidYMid slice" 
+        <svg
+          className="absolute inset-0 z-0 opacity-55 w-full h-full object-cover pointer-events-none"
+          viewBox="0 0 1200 620"
+          preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
         >
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#862586" stopOpacity=".9"/>
-              <stop offset="1" stopColor="#2A0B2C" stopOpacity="0"/>
-            </linearGradient>
-          </defs>
-          <rect width="1200" height="620" fill="url(#g1)"/>
+
+          <rect width="1200" height="620" fill="url(#g1)" />
           <g stroke="#E8A33D" strokeOpacity=".30" fill="none" strokeWidth="1">
-            <path d="M700 620 L700 260 L860 200 L1020 260 L1020 620"/>
-            <path d="M760 260 L760 620 M820 240 L820 620 M880 220 L880 620 M960 240 L960 620"/>
-            <path d="M700 320 L1020 320 M700 400 L1020 400 M700 480 L1020 480"/>
-            <path d="M860 200 L860 120 M830 150 L890 150 M845 120 L875 120"/>
+            <path d="M700 620 L700 260 L860 200 L1020 260 L1020 620" />
+            <path d="M760 260 L760 620 M820 240 L820 620 M880 220 L880 620 M960 240 L960 620" />
+            <path d="M700 320 L1020 320 M700 400 L1020 400 M700 480 L1020 480" />
+            <path d="M860 200 L860 120 M830 150 L890 150 M845 120 L875 120" />
             <path d="M620 620 L620 380 L700 340" />
-            <path d="M1020 340 L1120 300 L1120 620"/>
+            <path d="M1020 340 L1120 300 L1120 620" />
           </g>
           <g stroke="#ffffff" strokeOpacity=".10" strokeWidth="1">
-            <path d="M0 540 Q300 505 600 540 T1200 540"/>
-            <path d="M0 572 Q300 537 600 572 T1200 572"/>
+            <path d="M0 540 Q300 505 600 540 T1200 540" />
+            <path d="M0 572 Q300 537 600 572 T1200 572" />
           </g>
         </svg>
 
@@ -48,14 +44,14 @@ export default function Home() {
           </p>
 
           <div className="flex flex-wrap gap-3.5 mt-9">
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="font-display font-semibold text-[15px] px-6 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors"
             >
               Demander un diagnostic
             </Link>
-            <Link 
-              to="/nos-expertises" 
+            <Link
+              to="/nos-expertises"
               className="font-display font-semibold text-[15px] px-6 py-3.5 border border-white/40 text-white rounded-[2px] hover:border-white hover:bg-white/10 transition-colors"
             >
               Voir nos expertises
@@ -84,8 +80,8 @@ export default function Home() {
             </p>
           </div>
 
-          <ImageSlot 
-            refCode="IMG-01" 
+          <ImageSlot
+            refCode="IMG-01"
             heightClass="min-h-[340px]"
             brief="Photographie d'ouverture : plateforme offshore ou installation de production au crépuscule, cadrage large et horizon dégagé. Traitement bichromie violet #862586 / noir, densité suffisante pour laisser lire le texte."
           />
@@ -104,7 +100,7 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-[#862586]/18 mt-11">
-            
+
             {/* Pilier 01 */}
             <div className="bg-white p-[34px_30px_32px] flex flex-col gap-[14px]">
               <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">01</span>
@@ -173,7 +169,7 @@ export default function Home() {
             <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#E8A33D] mb-6">
               Effet d'une requalification de 12 M USD de coûts
             </p>
-            
+
             {/* Visual Bar */}
             <div className="relative h-16 bg-white/9 flex items-stretch rounded-[1px] overflow-hidden">
               <div className="bg-[#E8A33D] text-[#2A0B2C] w-[70.75%] flex items-center px-4 font-mono text-xs tracking-[0.03em] font-semibold">
@@ -255,7 +251,7 @@ export default function Home() {
       {/* SECTION: L'ASSOCIÉ-GÉRANT */}
       <section className="py-16 md:py-20 bg-[#FAF7F9]">
         <div className="max-w-[1100px] mx-auto px-7 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <ImageSlot 
+          <ImageSlot
             refCode="IMG-02"
             heightClass="min-h-[340px]"
             brief="Portrait de l'Associé-Gérant : buste, regard caméra, arrière-plan sobre uni ou bureau flouté. Lumière naturelle latérale, tenue formelle."
@@ -277,8 +273,8 @@ export default function Home() {
             <p className="text-[17.5px] text-[#3A2E38] leading-relaxed mb-6">
               Il est également le fondateur d'AFRIKAN CAMPUS, plateforme de formation professionnelle de niveau MBA dédiée à la gestion financière du secteur pétrolier amont.
             </p>
-            <Link 
-              to="/le-cabinet" 
+            <Link
+              to="/le-cabinet"
               className="inline-block font-display font-semibold text-[15px] px-6 py-3.5 bg-[#862586] text-white rounded-[2px] hover:bg-[#5C1560] transition-colors"
             >
               Découvrir le cabinet
@@ -301,15 +297,15 @@ export default function Home() {
             <p className="text-[#F0DBF0] text-lg max-w-[50ch] mt-5 leading-relaxed">
               Un cabinet qui audite des coûts sans former ceux qui les engagent ne produit qu'un effet ponctuel. Nos séminaires intra-entreprise et les modules d'AFRIKAN CAMPUS portent la même doctrine que nos missions, avec les mêmes cas et les mêmes modèles.
             </p>
-            <Link 
-              to="/formation" 
+            <Link
+              to="/formation"
               className="inline-block mt-6 font-display font-semibold text-[15px] px-6 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors"
             >
               Voir le catalogue de formation
             </Link>
           </div>
 
-          <ImageSlot 
+          <ImageSlot
             refCode="IMG-03"
             heightClass="min-h-[260px]"
             brief="Séance de formation ou atelier de travail : petit groupe de cadres autour d'une table, tableau ou écran visible, ambiance de travail réelle."
@@ -328,14 +324,14 @@ export default function Home() {
             Cinq jours suffisent pour le savoir. Le diagnostic est cadré, chiffré, et vous repartez avec un plan d'action, que vous poursuiviez avec nous ou non.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-9">
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="font-display font-semibold text-[15px] px-7 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors"
             >
               Prendre rendez-vous
             </Link>
-            <Link 
-              to="/notre-methode" 
+            <Link
+              to="/notre-methode"
               className="font-display font-semibold text-[15px] px-7 py-3.5 border border-white/40 text-white rounded-[2px] hover:border-white hover:bg-white/10 transition-colors"
             >
               Comprendre la méthode
