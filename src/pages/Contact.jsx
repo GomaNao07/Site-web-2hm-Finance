@@ -14,18 +14,51 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.company || !formData.email || !formData.message || !formData.consent) {
       alert("Veuillez remplir tous les champs obligatoires et accepter les conditions.");
       return;
     }
+
     setLoading(true);
-    setTimeout(() => {
+    setError(null);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xovkwowr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          jobTitle: formData.jobTitle,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        if (data && data.errors) {
+          setError(data.errors.map(err => err.message).join(", "));
+        } else {
+          setError("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+        }
+      }
+    } catch (err) {
+      setError("Erreur de connexion au serveur. Veuillez vérifier votre réseau.");
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   const handleChange = (e) => {
@@ -105,6 +138,11 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-rose-500/15 border border-rose-500/40 p-4 rounded-[2px] text-rose-200 font-mono text-sm">
+                  {error}
+                </div>
+              )}
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>

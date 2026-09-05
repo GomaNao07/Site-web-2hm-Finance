@@ -15,7 +15,6 @@ export default function Home() {
           aria-hidden="true"
         >
 
-          <rect width="1200" height="620" fill="url(#g1)" />
           <g stroke="#E8A33D" strokeOpacity=".30" fill="none" strokeWidth="1">
             <path d="M700 620 L700 260 L860 200 L1020 260 L1020 620" />
             <path d="M760 260 L760 620 M820 240 L820 620 M880 220 L880 620 M960 240 L960 620" />
@@ -24,10 +23,7 @@ export default function Home() {
             <path d="M620 620 L620 380 L700 340" />
             <path d="M1020 340 L1120 300 L1120 620" />
           </g>
-          <g stroke="#ffffff" strokeOpacity=".10" strokeWidth="1">
-            <path d="M0 540 Q300 505 600 540 T1200 540" />
-            <path d="M0 572 Q300 537 600 572 T1200 572" />
-          </g>
+
         </svg>
 
         <div className="max-w-[1100px] mx-auto px-7 relative z-10 pt-20 pb-20 md:pt-24 md:pb-22">
