@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AiChatDrawer from './components/AiChatDrawer';
 import Home from './pages/Home';
 import Cabinet from './pages/Cabinet';
 import Expertises from './pages/Expertises';
@@ -40,6 +41,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <AiChatDrawer />
       </div>
     </Router>
   );

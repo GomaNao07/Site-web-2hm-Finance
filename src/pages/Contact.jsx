@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Toast from '../components/Toast';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -26,39 +27,64 @@ export default function Contact() {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch("https://formspree.io/f/xovkwowr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          company: formData.company,
-          jobTitle: formData.jobTitle,
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message
-        })
-      });
+    const subjectMap = {
+      diagnostic: "Diagnostic de coûts (5 jours)",
+      gouvernance: "Gouvernance financière de projet",
+      partage: "Modélisation du partage de production",
+      comptabilite: "Abonnement comptable SYSCOHADA",
+      formation: "Programme de formation",
+      autre: "Autre demande"
+    };
 
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        const data = await response.json();
-        if (data && data.errors) {
-          setError(data.errors.map(err => err.message).join(", "));
+    const objetText = subjectMap[formData.subject] || formData.subject;
+
+    if (formData.consent) {
+      try {
+        const response = await fetch("https://formspree.io/f/xovkwowr", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            _subject: `Contact 2HM.FINANCE : ${objetText}`,
+            "Objet de la demande": objetText,
+            "Nom et prénom": formData.name,
+            "Société": formData.company,
+            "Fonction": formData.jobTitle || "Non spécifié",
+            "Email": formData.email,
+            "Téléphone": formData.phone || "Non spécifié",
+            "Message": formData.message
+          })
+        });
+
+        if (response.ok) {
+          setSubmitted(true);
+          setFormData({
+            name: '',
+            company: '',
+            jobTitle: '',
+            email: '',
+            phone: '',
+            subject: 'diagnostic',
+            message: '',
+            consent: false
+          });
         } else {
-          setError("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+          const data = await response.json();
+          if (data && data.errors) {
+            setError(data.errors.map(err => err.message).join(", "));
+          } else {
+            setError("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+          }
         }
+      } catch (err) {
+        setError("Erreur de connexion au serveur. Veuillez vérifier votre réseau.");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError("Erreur de connexion au serveur. Veuillez vérifier votre réseau.");
-    } finally {
-      setLoading(false);
     }
+
   };
 
   const handleChange = (e) => {
@@ -72,7 +98,7 @@ export default function Contact() {
   return (
     <div className="bg-[#2A0B2C] text-[#F3E6F3] min-h-screen py-16 md:py-24">
       <div className="max-w-[1100px] mx-auto px-7">
-        
+
         {/* HEADER */}
         <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
           Contact
@@ -96,7 +122,7 @@ export default function Contact() {
               République du Congo
             </p>
           </div>
- 
+
 
           <div className="bg-[#2A0B2C] p-8">
             <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3">
@@ -111,12 +137,12 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="bg-[#2A0B2C] p-8">
+          <div className="bg-[#2A0B2C] p-8 sm:col-span-2">
             <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3">
               Courriel &amp; Web
             </span>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
-              <a href="mailto:hhonvo@2hmfinance.com" className="text-white hover:underline border-b border-white/35 pb-0.5 block mb-1">
+              <a href="mailto:hhonvo@2hmfinance.com" className="text-white hover:underline   pb-0.5 block mb-1">
                 hhonvo@2hmfinance.com
               </a>
               <a href="https://www.2hmfinance.com" className="text-[#E8A33D] hover:underline">
@@ -132,156 +158,165 @@ export default function Contact() {
             Formulaire de contact
           </span>
 
-          {submitted ? (
-            <div className="bg-emerald-500/15 border border-emerald-500/40 p-6 rounded-[2px] text-emerald-200 font-corps text-lg">
-              Demande envoyée. Nous revenons vers vous sous 48 heures ouvrées.
+          {submitted && (
+            <div className="mb-6">
+              <Toast
+                type="success"
+                message="Demande envoyée. Nous revenons vers vous sous 48 heures ouvrées."
+                onClose={() => setSubmitted(false)}
+              />
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {error && (
-                <div className="bg-rose-500/15 border border-rose-500/40 p-4 rounded-[2px] text-rose-200 font-mono text-sm">
-                  {error}
-                </div>
-              )}
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                    Nom et prénom <span className="text-[#E8A33D]">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Votre nom complet"
-                    className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
-                  />
-                </div>
+          )}
 
-                <div>
-                  <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                    Société <span className="text-[#E8A33D]">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    name="company"
-                    required
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Nom de votre entreprise"
-                    className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
-                  />
-                </div>
-              </div>
+          {error && (
+            <div className="mb-6">
+              <Toast
+                type="error"
+                message={error}
+                onClose={() => setError(null)}
+              />
+            </div>
+          )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                    Fonction
-                  </label>
-                  <input 
-                    type="text" 
-                    name="jobTitle"
-                    value={formData.jobTitle}
-                    onChange={handleChange}
-                    placeholder="Ex: Directeur Financier"
-                    className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
-                  />
-                </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
 
-                <div>
-                  <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                    Adresse email professionnelle <span className="text-[#E8A33D]">*</span>
-                  </label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="nom@entreprise.com"
-                    className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                    Téléphone
-                  </label>
-                  <input 
-                    type="tel" 
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+242..."
-                    className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
-                  />
-                </div>
-              </div>
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                  Objet de la demande
+                  Nom et prénom <span className="text-[#E8A33D]">*</span>
                 </label>
-                <select 
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white focus:outline-none focus:border-[#E8A33D]"
-                >
-                  <option value="diagnostic">Diagnostic de coûts (5 jours)</option>
-                  <option value="gouvernance">Gouvernance financière de projet</option>
-                  <option value="partage">Modélisation du partage de production</option>
-                  <option value="comptabilite">Abonnement comptable SYSCOHADA</option>
-                  <option value="formation">Programme de formation</option>
-                  <option value="autre">Autre demande</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
-                  Votre message <span className="text-[#E8A33D]">*</span>
-                </label>
-                <textarea 
-                  name="message"
+                <input
+                  type="text"
+                  name="name"
                   required
-                  rows={4}
-                  value={formData.message}
+                  value={formData.name}
                   onChange={handleChange}
-                  placeholder="Décrivez votre besoin ou votre situation..."
+                  placeholder="Votre nom complet"
                   className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
                 />
               </div>
 
-              <div className="flex items-start gap-3">
-                <input 
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  required
-                  checked={formData.consent}
-                  onChange={handleChange}
-                  className="mt-1 accent-[#E8A33D] cursor-pointer"
-                />
-                <label htmlFor="consent" className="text-xs text-[#C9A8C9] leading-relaxed cursor-pointer">
-                  J'accepte que les informations saisies soient traitées par 2HM.FINANCE dans le cadre de ma demande de contact et de la relation commerciale qui peut en découler.
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                  Société <span className="text-[#E8A33D]">*</span>
                 </label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Nom de votre entreprise"
+                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                  Fonction
+                </label>
+                <input
+                  type="text"
+                  name="jobTitle"
+                  value={formData.jobTitle}
+                  onChange={handleChange}
+                  placeholder="Ex: Directeur Financier"
+                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                />
               </div>
 
               <div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="font-display font-semibold text-base px-8 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors cursor-pointer disabled:opacity-50"
-                >
-                  {loading ? 'Envoi en cours...' : 'Envoyer ma demande'}
-                </button>
+                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                  Adresse email professionnelle <span className="text-[#E8A33D]">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="nom@entreprise.com"
+                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                />
               </div>
 
-            </form>
-          )}
+              <div>
+                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                  Téléphone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+242..."
+                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                Objet de la demande
+              </label>
+              <select
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white focus:outline-none focus:border-[#E8A33D]"
+              >
+                <option value="diagnostic">Diagnostic de coûts (5 jours)</option>
+                <option value="gouvernance">Gouvernance financière de projet</option>
+                <option value="partage">Modélisation du partage de production</option>
+                <option value="comptabilite">Abonnement comptable SYSCOHADA</option>
+                <option value="formation">Programme de formation</option>
+                <option value="autre">Autre demande</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                Votre message <span className="text-[#E8A33D]">*</span>
+              </label>
+              <textarea
+                name="message"
+                required
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Décrivez votre besoin ou votre situation..."
+                className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+              />
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+                checked={formData.consent}
+                onChange={handleChange}
+                className="mt-1 accent-[#E8A33D] cursor-pointer"
+              />
+              <label htmlFor="consent" className="text-xs text-[#C9A8C9] leading-relaxed cursor-pointer">
+                J'accepte que les informations saisies soient traitées par 2HM.FINANCE dans le cadre de ma demande de contact et de la relation commerciale qui peut en découler.
+              </label>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="font-display font-semibold text-base px-8 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors cursor-pointer disabled:opacity-50"
+              >
+                {loading ? 'Envoi en cours...' : 'Envoyer ma demande'}
+              </button>
+            </div>
+
+          </form>
 
         </div>
 

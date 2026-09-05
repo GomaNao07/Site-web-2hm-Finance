@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logoImg from '../assets/logo.jpg';
+// import logoImg from '../assets/logo.jpg';
+import logoImg from '../assets/Translucent_logo.png';
 
 export default function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: '01 Accueil', path: '/' },
-    { name: '02 Le cabinet', path: '/le-cabinet' },
-    { name: '03 Expertises', path: '/nos-expertises' },
-    { name: '04 Méthode', path: '/notre-methode' },
-    { name: '05 Formation', path: '/formation' },
-    { name: '06 Contact', path: '/contact' },
+    { name: 'Accueil', path: '/' },
+    { name: 'Le cabinet', path: '/le-cabinet' },
+    { name: 'Expertises', path: '/nos-expertises' },
+    { name: 'Méthode', path: '/notre-methode' },
+    { name: 'Formation', path: '/formation' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => {
@@ -22,13 +23,13 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#2A0B2C] text-[#F3E6F3] shadow-md font-mono text-[11px] tracking-[0.1em] uppercase">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-[#2A0B2C] backdrop-blur-3xl text-[#F3E6F3] shadow-md font-mono text-[11px] tracking-[0.1em] uppercase">
       <div className="max-w-[1100px] mx-auto px-7 flex items-center justify-between">
 
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 text-white text-sm font-display font-extrabold tracking-wide hover:opacity-90 transition-opacity">
-          <img src={logoImg} alt="2HM Finance Logo" className="h-11 w-auto object-contain " />
-          <span className="text-[#E8A33D] font-extrabold text-base">2HM</span>FINANCE
+          <img src={logoImg} alt="2HM Finance Logo" className="h-10 w-auto object-contain " />
+          <span className="text-[#E8A33D] font-extrabold text-base">2HM FINANCE</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -37,7 +38,7 @@ export default function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`transition-colors duration-150 py-3 px-2.5 ${isActive(link.path)
+              className={`transition-colors duration-150 py-4 px-2.5 ${isActive(link.path)
                 ? 'text-white font-bold border-b-2 border-[#E8A33D]'
                 : 'text-[#E7C8E7] hover:text-white'
                 }`}
