@@ -26,7 +26,7 @@ export default function ImageSlot({
   url,
   images,
   interval = 4000
-}) {
+},) {
   // Support single image or array of images passed via images, url, or imageSrc
   const imageList = Array.isArray(images)
     ? images

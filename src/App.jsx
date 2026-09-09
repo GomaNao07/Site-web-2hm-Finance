@@ -9,6 +9,8 @@ import Expertises from './pages/Expertises';
 import Methode from './pages/Methode';
 import Formation from './pages/Formation';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
+import Maintenance from './pages/Maintenance';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -36,8 +38,9 @@ function App() {
             <Route path="/notre-methode" element={<Methode />} />
             <Route path="/formation" element={<Formation />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/maintenance" element={<Maintenance />} />
 
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
