@@ -1,24 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function ImageSlot({ refCode, brief, heightClass = "min-h-[230px]", imageSrc }) {
+export default function ImageSlot({
+  refCode,
+  brief,
+  heightClass = "min-h-[230px]",
+  imageSrc,
+  url,
+  images,
+  interval = 4000
+}) {
+  // Support single image or array of images passed via images, url, or imageSrc
+  const imageList = Array.isArray(images)
+    ? images
+    : (Array.isArray(url) ? url : (imageSrc || url ? [imageSrc || url] : []));
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (imageList.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % imageList.length);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [imageList.length, interval]);
+
   return (
-    <div 
-      className={`relative border border-[#862586]/45 bg-[#3C1240] bg-cover bg-center ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-[2px] overflow-hidden group`}
-      style={imageSrc ? { backgroundImage: `url(${imageSrc})` } : {}}
+    <div
+      className={`relative border border-[#862586]/45 bg-[#3C1240] ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-[2px] overflow-hidden group`}
     >
+      {/* Background Images for Slideshow */}
+      {imageList.length > 0 && (
+        imageList.map((img, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
+            style={{
+              backgroundImage: `url(${img})`,
+              opacity: index === currentIndex ? 1 : 0,
+            }}
+          />
+        ))
+      )}
+
       {/* Bichromie overlay gradient */}
-      <div 
+      <div
         className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
         style={{
-          background: 'linear-gradient(150deg, rgba(134,37,134,0.62), rgba(26,4,28,0.86))',
+          background: 'linear-gradient(150deg, rgba(134,37,134,0.2), rgba(26,4,28,0.6))',
           mixBlendMode: 'multiply'
         }}
       />
 
-      {/* Ref Code Tag */}
-      <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#E8A33D] absolute top-[18px] left-[22px] z-[3]">
-        {refCode}
-      </span>
+      {/* Header: Ref Code Tag & Slideshow Indicators */}
+      <div className="absolute top-[18px] left-[22px] right-[22px] z-[3] flex items-center justify-between pointer-events-none">
+        {refCode && (
+          <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#E8A33D]">
+            {refCode}
+          </span>
+        )}
+
+        {/* Dots for slideshow */}
+        {imageList.length > 1 && (
+          <div className="flex items-center gap-1.5 pointer-events-auto">
+            {imageList.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Aller à la diapositive ${index + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
+                  ? 'w-5 bg-[#E8A33D]'
+                  : 'w-1.5 bg-white/40 hover:bg-white/70'
+                  }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Brief / Details */}
       {brief && (

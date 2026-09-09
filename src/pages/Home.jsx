@@ -1,30 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot';
-
+import img_1 from '../assets/persons/img_1.jpeg';
+import platform_1 from '../assets/platforms/platform_1.jpeg';
+import platform_2 from '../assets/platforms/platform_2.jpeg';
+import platform_3 from '../assets/platforms/platform_3.jpeg';
 
 export default function Home() {
   return (
     <div>
       {/* HERO SECTION */}
       <section className="bg-[#2A0B2C] text-[#FBF4FB] relative overflow-hidden">
-        <svg
+        <div
           className="absolute inset-0 z-0 opacity-55 w-full h-full object-cover pointer-events-none"
-          viewBox="0 0 1200 620"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
         >
 
-          <g stroke="#E8A33D" strokeOpacity=".30" fill="none" strokeWidth="1">
-            <path d="M700 620 L700 260 L860 200 L1020 260 L1020 620" />
-            <path d="M760 260 L760 620 M820 240 L820 620 M880 220 L880 620 M960 240 L960 620" />
-            <path d="M700 320 L1020 320 M700 400 L1020 400 M700 480 L1020 480" />
-            <path d="M860 200 L860 120 M830 150 L890 150 M845 120 L875 120" />
-            <path d="M620 620 L620 380 L700 340" />
-            <path d="M1020 340 L1120 300 L1120 620" />
-          </g>
+          <ImageSlot
+            refCode="IMG-01"
+            images={[platform_1, platform_2, platform_3]}
+            heightClass="min-h-[1100px]"
+            brief="Photographie d'ouverture : plateforme offshore ou installation de production au crépuscule, cadrage large et horizon dégagé. Traitement bichromie violet #862586 / noir, densité suffisante pour laisser lire le texte."
+          />
 
-        </svg>
+        </div>
+        <div
+          className="absolute inset-0 z-1 pointer-events-none transition-opacity duration-300"
+          style={{
+            background: 'linear-gradient(150deg, rgba(134,37,134,.5), rgba(26,4,28,.5))',
+            mixBlendMode: 'multiply'
+          }}
+        />
 
         <div className="max-w-[1100px] mx-auto px-7 relative z-10 pt-20 pb-20 md:pt-24 md:pb-22">
           <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
@@ -62,7 +67,7 @@ export default function Home() {
 
 
       {/* SECTION: LE CONSTAT */}
-      <section className="bg-white py-16 md:py-20 text-[#1A1418]">
+      <section className="bg-white py-16 md:py-20 text-[#1A1418] relative">
         <div className="max-w-[1100px] mx-auto px-7 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
           <div>
             <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#862586] mb-[18px]">
@@ -76,11 +81,6 @@ export default function Home() {
             </p>
           </div>
 
-          <ImageSlot
-            refCode="IMG-01"
-            heightClass="min-h-[340px]"
-            brief="Photographie d'ouverture : plateforme offshore ou installation de production au crépuscule, cadrage large et horizon dégagé. Traitement bichromie violet #862586 / noir, densité suffisante pour laisser lire le texte."
-          />
         </div>
       </section>
 
@@ -129,7 +129,7 @@ export default function Home() {
 
             {/* Pilier 03 */}
             <div className="bg-white p-[34px_30px_32px] flex flex-col gap-[14px]">
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">01</span>
+              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">03</span>
               <h3 className="font-display font-semibold text-xl text-[#1A1418] leading-snug">
                 Optimisation de la rente<br />
                 <span className="font-normal text-[#6E6472] text-base">Partage de production</span>
@@ -248,8 +248,9 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-[#FAF7F9]">
         <div className="max-w-[1100px] mx-auto px-7 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <ImageSlot
-            refCode="IMG-02"
-            heightClass="min-h-[340px]"
+            refCode=""
+            url={img_1}
+            heightClass="min-h-[640px]"
             brief="Portrait de l'Associé-Gérant : buste, regard caméra, arrière-plan sobre uni ou bureau flouté. Lumière naturelle latérale, tenue formelle."
           />
 
@@ -260,14 +261,14 @@ export default function Home() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#1A1418] mb-1">
               Hervé HONVO
             </h2>
-            <p className="font-mono text-[12.5px] text-[#6E6472] tracking-[0.04em] mb-5">
+            <p className="font-mono text-[15px] font-bold text-black tracking-[0.04em] mb-5">
               Associé-Gérant · 2HM.FINANCE
             </p>
             <p className="text-[17.5px] text-[#3A2E38] leading-relaxed mb-4">
               Praticien de l'ingénierie financière et du contrôle de gestion appliqués à l'amont pétrolier, il conduit personnellement les missions de diagnostic et les mandats sensibles. Son travail porte sur un point précis : la frontière entre le coût engagé et le coût effectivement recouvré.
             </p>
             <p className="text-[17.5px] text-[#3A2E38] leading-relaxed mb-6">
-              Il est également le fondateur d'AFRIKAN CAMPUS, plateforme de formation professionnelle de niveau MBA dédiée à la gestion financière du secteur pétrolier amont.
+              Il est également le formateur d'AFRIKAN CAMPUS, plateforme de formation professionnelle de niveau MBA dédiée à la gestion financière du secteur pétrolier amont.
             </p>
             <Link
               to="/le-cabinet"
@@ -301,11 +302,13 @@ export default function Home() {
             </Link>
           </div>
 
-          <ImageSlot
+
+          {/* <ImageSlot
             refCode="IMG-03"
-            heightClass="min-h-[260px]"
+            url={""}
+            heightClass="min-h-[560px]"
             brief="Séance de formation ou atelier de travail : petit groupe de cadres autour d'une table, tableau ou écran visible, ambiance de travail réelle."
-          />
+          /> */}
         </div>
       </section>
 
