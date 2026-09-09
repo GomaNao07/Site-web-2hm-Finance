@@ -251,7 +251,7 @@ export default function Home() {
             refCode=""
             url={img_1}
             heightClass="min-h-[640px]"
-            brief="Portrait de l'Associé-Gérant : buste, regard caméra, arrière-plan sobre uni ou bureau flouté. Lumière naturelle latérale, tenue formelle."
+            brief=""
           />
 
           <div>

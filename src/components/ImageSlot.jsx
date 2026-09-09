@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
+
+/**
+ * @typedef {Object} ImageSlotProps
+ * @property {string} [refCode] - Code de référence affiché en haut à gauche (ex: "REF-01").
+ * @property {React.ReactNode} [brief] - Texte explicatif ou composant affiché en bas de la carte.
+ * @property {string} [heightClass="min-h-[230px]"] - Classe CSS Tailwind définissant la hauteur minimale du composant.
+ * @property {string} [imageSrc] - URL d'une image unique (alternative à `url` et `images`).
+ * @property {string | string[]} [url] - URL d'une image unique ou tableau d'URLs pour le diaporama.
+ * @property {string[]} [images] - Tableau d'URLs d'images pour le diaporama (prioritaire).
+ * @property {number} [interval=4000] - Intervalle de défilement automatique des images en millisecondes.
+ */
+
+/**
+ * Composant de carte avec diaporama d'images en arrière-plan et filtre coloré.
+ * 
+ * @param {ImageSlotProps} props - Les propriétés du composant.
+ */
+
 export default function ImageSlot({
   refCode,
   brief,
