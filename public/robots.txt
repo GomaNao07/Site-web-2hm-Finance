@@ -1,0 +1,6 @@
+# robots.txt for 2HM Finance (https://2hmfinance.com)
+User-agent: *
+Allow: /
+Disallow: /maintenance
+
+Sitemap: https://2hmfinance.com/sitemap.xml

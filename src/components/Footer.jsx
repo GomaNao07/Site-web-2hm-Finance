@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#160616] text-[#B79AB7] py-12 border-t border-[#862586]/20 font-mono text-[12.5px] leading-[2]">
       <div className="max-w-[1100px] mx-auto px-7 flex flex-col md:flex-row justify-between gap-8 items-start">
-        
+
         {/* Brand & Slogan */}
         <div>
           <strong className="text-white font-display text-[15px] tracking-[0.04em] block mb-1">
@@ -18,7 +18,7 @@ export default function Footer() {
         {/* Legal Info */}
         <div>
           <p className="m-0">RCCM CG-BZV-01-2021-B13-00530</p>
-          <p className="m-0">SARL unipersonnelle au capital de 1 000 000 FCFA</p>
+          <p className="m-0"></p>
           <p className="m-0">Bureau : Pointe-Noire</p>
         </div>
 

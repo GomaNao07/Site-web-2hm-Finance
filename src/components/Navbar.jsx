@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 // import logoImg from '../assets/logo.jpg';
-import logoImg from '../assets/Translucent_logo.png';
+import logoImg from '../assets/Translucent_logo_large.png';
 
 export default function Navbar() {
   const location = useLocation();
@@ -29,7 +29,6 @@ export default function Navbar() {
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 text-white text-sm font-display font-extrabold tracking-wide hover:opacity-90 transition-opacity">
           <img src={logoImg} alt="2HM Finance Logo" className="h-10 w-auto object-contain " />
-          <span className="text-[#E8A33D] font-extrabold text-base">2HM FINANCE</span>
         </Link>
 
         {/* Desktop Nav */}

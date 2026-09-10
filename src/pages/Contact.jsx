@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import Toast from '../components/Toast';
 
 export default function Contact() {
@@ -16,6 +18,46 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const contactJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contactez 2HM Finance",
+      "description": "Prenez rendez-vous avec les experts 2HM Finance à Pointe-Noire pour un diagnostic de vos coûts pétroliers.",
+      "url": "https://2hmfinance.com/contact",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "2HM Finance",
+        "telephone": "+242055179230",
+        "email": "hhonvo@2hmfinance.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "106, rue Benoît louembet, Km4",
+          "addressLocality": "Pointe-Noire",
+          "addressCountry": "CG"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://2hmfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://2hmfinance.com/contact"
+        }
+      ]
+    }
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -97,6 +139,14 @@ export default function Contact() {
 
   return (
     <div className="bg-[#2A0B2C] text-[#F3E6F3] min-h-screen py-16 md:py-24">
+      <SEO
+        title="Contactez 2HM Finance | Diagnostic Financier Pétrolier"
+        description="Prenez rendez-vous avec les experts 2HM Finance à Pointe-Noire pour un diagnostic de vos coûts pétroliers ou un entretien d'ingénierie financière."
+        canonical="https://2hmfinance.com/contact"
+        ogType="website"
+        jsonLd={contactJsonLd}
+      />
+
       <div className="max-w-[1100px] mx-auto px-7">
 
         {/* HEADER */}
@@ -113,11 +163,11 @@ export default function Contact() {
         {/* CONTACT GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 bg-white/20 mt-11">
           <div className="bg-[#2A0B2C] p-8">
-            <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3">
+            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
               Bureau opérationnel
-            </span>
+            </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
-              106, rue Benoît Loembet<br />
+              106, rue Benoît louembet<br />
               Km4 — Pointe-Noire<br />
               République du Congo
             </p>
@@ -125,9 +175,9 @@ export default function Contact() {
 
 
           <div className="bg-[#2A0B2C] p-8">
-            <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3">
+            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
               Téléphone
-            </span>
+            </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
               <a href="tel:+242055179230" className="text-white hover:underline border-b border-white/35 pb-0.5">
                 +242 05 517 92 30
@@ -138,25 +188,25 @@ export default function Contact() {
           </div>
 
           <div className="bg-[#2A0B2C] p-8 sm:col-span-2">
-            <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3">
+            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
               Courriel &amp; Web
-            </span>
+            </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
               <a href="mailto:hhonvo@2hmfinance.com" className="text-white hover:underline   pb-0.5 block mb-1">
                 hhonvo@2hmfinance.com
               </a>
-              <a href="https://www.2hmfinance.com" className="text-[#E8A33D] hover:underline">
+              <Link to="/" className="text-[#E8A33D] hover:underline">
                 www.2hmfinance.com
-              </a>
+              </Link>
             </p>
           </div>
         </div>
 
         {/* INTERACTIVE FORM */}
         <div className="mt-12 bg-white/6 border border-white/18 p-8 md:p-10">
-          <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-6 font-semibold">
+          <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-6 font-semibold">
             Formulaire de contact
-          </span>
+          </h2>
 
           {submitted && (
             <div className="mb-6">

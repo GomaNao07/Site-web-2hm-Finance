@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 export default function Methode() {
   const steps = [
@@ -9,8 +10,48 @@ export default function Methode() {
     { day: "Ensuite", title: "Décision", desc: "Vous poursuivez en interne, ou vous nous confiez la mise en œuvre. Le diagnostic reste utile dans les deux cas." }
   ];
 
+  const methodeJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Diagnostic Prix subi, coût maîtrisé (5 jours)",
+      "description": "Méthode de diagnostic rapide en 5 jours pour identifier et qualifier les fuites de marge et coûts non recouvrables dans l'amont pétrolier.",
+      "step": steps.map((s, idx) => ({
+        "@type": "HowToStep",
+        "position": idx + 1,
+        "name": `${s.day} : ${s.title}`,
+        "text": s.desc
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://2hmfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Notre Méthode",
+          "item": "https://2hmfinance.com/notre-methode"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#FAF7F9]">
+      <SEO
+        title="Méthode Diagnostic Coûts Pétroliers | 2HM Finance"
+        description="Découvrez notre diagnostic 'Prix subi, coût maîtrisé' en 5 jours ouvrés et nos Contrats de Performance Coûts indexés sur l'Économie Nette Vérifiée."
+        canonical="https://2hmfinance.com/notre-methode"
+        ogType="article"
+        jsonLd={methodeJsonLd}
+      />
       
       {/* SECTION: LE DIAGNOSTIC */}
       <section className="bg-white py-16 md:py-24 text-[#1A1418]">
@@ -26,47 +67,53 @@ export default function Methode() {
           </p>
 
           {/* 3 Sondes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-[#862586]/18 mt-12">
-            <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 01</span>
-              <h3 className="font-display font-semibold text-xl text-[#1A1418]">Recouvrabilité du Cost Oil</h3>
-              <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
-                Nous testons l'éligibilité effective de vos coûts déclarés et mesurons l'exposition en cas de requalification.
-              </p>
-            </div>
+          <div className="mt-12">
+            <h2 className="sr-only">Les trois sondes de diagnostic</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-[#862586]/18">
+              <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
+                <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 01</span>
+                <h3 className="font-display font-semibold text-xl text-[#1A1418]">Recouvrabilité du Cost Oil</h3>
+                <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
+                  Nous testons l'éligibilité effective de vos coûts déclarés et mesurons l'exposition en cas de requalification.
+                </p>
+              </div>
 
-            <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 02</span>
-              <h3 className="font-display font-semibold text-xl text-[#1A1418]">Certification du R-Factor</h3>
-              <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
-                Nous vérifions le calcul du R-Factor et de ses composantes, dont dépend directement votre part de Profit Oil.
-              </p>
-            </div>
+              <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
+                <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 02</span>
+                <h3 className="font-display font-semibold text-xl text-[#1A1418]">Certification du R-Factor</h3>
+                <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
+                  Nous vérifions le calcul du R-Factor et de ses composantes, dont dépend directement votre part de Profit Oil.
+                </p>
+              </div>
 
-            <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 03</span>
-              <h3 className="font-display font-semibold text-xl text-[#1A1418]">Lifting cost par centre de coûts</h3>
-              <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
-                Nous décomposons le coût de production par centre pour localiser précisément les postes qui dérivent.
-              </p>
+              <div className="bg-[#FAF7F9] p-[34px_30px_32px] flex flex-col gap-3">
+                <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#862586]">Sonde 03</span>
+                <h3 className="font-display font-semibold text-xl text-[#1A1418]">Lifting cost par centre de coûts</h3>
+                <p className="text-[16.5px] text-[#3A2E38] m-0 leading-relaxed">
+                  Nous décomposons le coût de production par centre pour localiser précisément les postes qui dérivent.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* 5 Steps timeline */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0.5 bg-[#862586]/18 mt-10">
-            {steps.map((step, idx) => (
-              <div key={idx} className="bg-white p-[26px_20px] flex flex-col gap-2.5 min-h-[190px]">
-                <span className="font-mono text-[11px] tracking-[0.12em] text-[#E8A33D] font-semibold">
-                  {step.day}
-                </span>
-                <h4 className="font-display font-bold text-base text-[#1A1418]">
-                  {step.title}
-                </h4>
-                <p className="text-[14.5px] text-[#3A2E38] m-0 leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+          <div className="mt-10">
+            <h2 className="sr-only">Calendrier du diagnostic en 5 jours</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0.5 bg-[#862586]/18">
+              {steps.map((step, idx) => (
+                <div key={idx} className="bg-white p-[26px_20px] flex flex-col gap-2.5 min-h-[190px]">
+                  <span className="font-mono text-[11px] tracking-[0.12em] text-[#E8A33D] font-semibold">
+                    {step.day}
+                  </span>
+                  <h3 className="font-display font-bold text-base text-[#1A1418]">
+                    {step.title}
+                  </h3>
+                  <p className="text-[14.5px] text-[#3A2E38] m-0 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -91,7 +138,7 @@ export default function Methode() {
           </div>
 
           <div className="bg-white/6 border border-white/18 p-7">
-            <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-4">
+            <span className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-4 font-semibold">
               Nos engagements de mission
             </span>
             <ul className="space-y-3 text-[16.5px] text-[#EAD8EA] pl-5 list-disc marker:text-[#E8A33D]">
@@ -108,3 +155,4 @@ export default function Methode() {
     </div>
   );
 }
+

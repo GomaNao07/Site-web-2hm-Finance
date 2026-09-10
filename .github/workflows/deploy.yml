@@ -1,0 +1,48 @@
+name: 🚀 Deploy 2HM Finance — FTP LWS
+
+on:
+  push:
+    branches:
+      #- main         # Déploiement auto au push sur main
+      - production   # Maintien compatibilité avec l'ancienne branche
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code source
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      # 2. Configurer Node.js
+      - name:  Configurer Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Installer les dépendances
+      - name: Installer les dépendances
+        run: npm ci
+
+      # 4. Construire le projet Vite (génère le dossier dist/)
+      - name: Build du projet
+        run: npm run build
+
+      # 5. Déployer le contenu de dist/ sur le serveur FTP LWS
+      - name: Déployer sur LWS via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /htdocs/
+          protocol: ftp
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

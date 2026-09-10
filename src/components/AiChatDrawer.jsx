@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Sparkles, X, Send, RefreshCw, MessageSquare } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Bot, Sparkles, X, Send, RefreshCw} from 'lucide-react';
 
 const INITIAL_MESSAGES = [
   {
@@ -9,18 +9,13 @@ const INITIAL_MESSAGES = [
   }
 ];
 
-const SUGGESTIONS = [
-  "Qu'est-ce que le diagnostic 5 jours ?",
-  "Comment fonctionne le Contrat de Performance ?",
-  "Quelles sont vos offres de formation ?",
-  "Où est situé le cabinet ?"
-];
+
 
 const KNOWLEDGE_RESPONSES = {
   diagnostic: "Notre diagnostic « Prix subi, coût maîtrisé » se déroule sur 5 jours ouvrés avec 3 sondes ciblées : 1. Recouvrabilité du Cost Oil, 2. Certification du R-Factor, 3. Lifting cost par centre de coûts. Vous obtenez un rapport chiffré et un plan d'action immédiatement exploitables.",
   performance: "Avec le Contrat de Performance Coûts, nous ne facturons que ce que vous récupérez ! Notre rémunération est strictement indexée sur l'Économie Nette Vérifiée après audit et contradictoire. Aucun gain vérifié = aucun honoraire de performance.",
   formation: "Nous proposons des séminaires intra-entreprise sur mesure et des cursus via AFRIKAN CAMPUS (niveau MBA). Nos 4 axes principaux sont : 1. Contrat de partage de production, 2. Contrôle des coûts pétroliers, 3. Contrôle de gestion & stratégie, 4. Contenu local.",
-  cabinet: "Le siège social et le bureau opérationnel de 2HM.FINANCE sont établis à Pointe-Noire (106, rue Benoît Loembet, Km4), au République du Congo, au plus près des opérations pétrolières de la zone CEMAC-OHADA.",
+  cabinet: "Le siège social et le bureau opérationnel de 2HM.FINANCE sont établis à Pointe-Noire (106, rue Benoît louembet, Km4), au République du Congo, au plus près des opérations pétrolières de la zone CEMAC-OHADA.",
   default: "Merci pour votre message ! Un expert de 2HM.FINANCE peut analyser vos besoins précis. Souhaitez-vous planifier un échange d'une heure sans engagement ou être rappelé par nos équipes ?"
 };
 

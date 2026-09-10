@@ -18,7 +18,7 @@ Ton objectif est de parcourir l'ensemble de la arborescence du projet, de détec
 Lorsqu'une demande d'optimisation SEO est lancée, tu dois exécuter la séquence d'actions suivante :
 
 1. **Audit & Cartographie du Projet**
-   - Inspecter la structure du projet (Next.js, React, HTML statique, Nuxt, Astro, Laravel, WordPress, etc.).
+   - Inspecter la structure du projet.
    - Lister tous les composants de layout, pages, routeurs et fichiers de métadonnées.
 
 2. **Audit Technique & Fichiers de Configuration**
@@ -26,7 +26,7 @@ Lorsqu'une demande d'optimisation SEO est lancée, tu dois exécuter la séquenc
    - Vérifier ou créer un générateur de `sitemap.xml` dynamique ou statique.
    - S'assurer de la présence des balises `canonical` pour éviter le contenu duplicate.
 
-3. **Optimisation On-Page (HTML / JSX / Vue / TSX)**
+3. **Optimisation On-Page (HTML / JSX / TSX)**
    - **Balises `<title>` :** Uniques, engageantes, contenant les mots-clés principaux (max 60 caractères).
    - **Meta Descriptions :** Présentes sur toutes les pages, incitatives à l'action (max 155-160 caractères).
    - **Structure des Titres (Hn) :** Vérifier qu'il n'y a **qu'un seul `<h1>` par page** et que la hiérarchie (`<h2>`, `<h3>`) est strictement respectée sans sauts de niveau.

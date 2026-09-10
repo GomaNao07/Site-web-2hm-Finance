@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import ImageSlot from '../components/ImageSlot';
 import img_1 from '../assets/persons/img_1.jpeg';
 import platform_1 from '../assets/platforms/platform_1.jpeg';
@@ -7,8 +8,54 @@ import platform_2 from '../assets/platforms/platform_2.jpeg';
 import platform_3 from '../assets/platforms/platform_3.jpeg';
 
 export default function Home() {
+  const homeJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "2HM Finance",
+      "alternateName": "2HM.FINANCE",
+      "url": "https://2hmfinance.com/",
+      "logo": "https://2hmfinance.com/images/logo.png",
+      "image": "https://2hmfinance.com/images/og-share-2hmfinance.jpg",
+      "description": "Cabinet d'ingénierie financière et de contrôle de gestion spécialisé dans l'amont pétrolier en zone CEMAC-OHADA.",
+      "telephone": "+242055179230",
+      "email": "hhonvo@2hmfinance.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "106, rue Benoît louembet, Km4",
+        "addressLocality": "Pointe-Noire",
+        "addressCountry": "CG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-4.777",
+        "longitude": "11.864"
+      },
+      "areaServed": ["CG", "GA", "CM", "GQ", "TD"],
+      "founder": {
+        "@type": "Person",
+        "name": "Hervé HONVO",
+        "jobTitle": "Associé-Gérant"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "2HM Finance",
+      "url": "https://2hmfinance.com/"
+    }
+  ];
+
   return (
     <div>
+      <SEO
+        title="2HM Finance | Conseil Financier & Contrôle de Gestion Pétrolier"
+        description="Cabinet d'ingénierie financière & contrôle de gestion pétrolier amont en zone CEMAC. Maîtrise des coûts, Cost Recovery & optimisation de la rente."
+        canonical="https://2hmfinance.com/"
+        ogType="website"
+        jsonLd={homeJsonLd}
+      />
+
       {/* HERO SECTION */}
       <section className="bg-[#2A0B2C] text-[#FBF4FB] relative overflow-hidden">
         <div
@@ -19,6 +66,7 @@ export default function Home() {
             refCode="IMG-01"
             images={[platform_1, platform_2, platform_3]}
             heightClass="min-h-[1100px]"
+            alt="Plateforme pétrolière offshore au crépuscule - 2HM Finance ingénierie financière"
             brief="Photographie d'ouverture : plateforme offshore ou installation de production au crépuscule, cadrage large et horizon dégagé. Traitement bichromie violet #862586 / noir, densité suffisante pour laisser lire le texte."
           />
 
@@ -70,9 +118,9 @@ export default function Home() {
       <section className="bg-white py-16 md:py-20 text-[#1A1418] relative">
         <div className="max-w-[1100px] mx-auto px-7 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
           <div>
-            <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#862586] mb-[18px]">
+            <h2 className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#862586] mb-[18px]">
               Le constat
-            </p>
+            </h2>
             <p className="font-corps text-2xl sm:text-3xl md:text-[32px] leading-[1.42] font-light max-w-[26ch]">
               Dans l'amont pétrolier, le prix de vente ne se négocie pas. La marge, elle, se joue sur ce que vous parvenez à faire <strong className="font-medium text-[#862586] bg-[#E8A33D]/30 px-1">reconnaître, certifier et recouvrer</strong>.
             </p>
@@ -251,6 +299,7 @@ export default function Home() {
             refCode=""
             url={img_1}
             heightClass="min-h-[640px]"
+            alt="Hervé HONVO - Associé-Gérant 2HM Finance, expert en ingénierie financière pétrolière"
             brief=""
           />
 

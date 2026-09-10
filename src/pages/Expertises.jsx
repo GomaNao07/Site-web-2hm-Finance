@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Expertises() {
   const { hash } = useLocation();
@@ -13,8 +14,60 @@ export default function Expertises() {
     }
   }, [hash]);
 
+  const expertisesJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Contrôle des coûts pétroliers & Cost Recovery",
+      "provider": {
+        "@type": "Organization",
+        "name": "2HM Finance",
+        "url": "https://2hmfinance.com/"
+      },
+      "areaServed": "CEMAC",
+      "description": "Revue d'éligibilité CAPEX/OPEX, test de recouvrabilité du Cost Oil, certification du R-Factor et défense en audit contradictoire."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Gouvernance financière des projets d'hydrocarbures",
+      "provider": {
+        "@type": "Organization",
+        "name": "2HM Finance",
+        "url": "https://2hmfinance.com/"
+      },
+      "areaServed": "CEMAC",
+      "description": "Contrôle de gestion projet, procédures d'engagement de dépense, reporting de joint-venture et documentation des cash-calls."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://2hmfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Nos Expertises",
+          "item": "https://2hmfinance.com/nos-expertises"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#FAF7F9]">
+      <SEO
+        title="Nos Expertises Financial & Cost Recovery | 2HM Finance"
+        description="Contrôle des coûts pétroliers (CAPEX, OPEX, Cost Recovery), gouvernance financière de projet et optimisation de la rente en partage de production."
+        canonical="https://2hmfinance.com/nos-expertises"
+        ogType="article"
+        jsonLd={expertisesJsonLd}
+      />
       
       {/* HEADER BANNER */}
       <section className="bg-[#2A0B2C] text-[#F3E6F3] py-16 md:py-24">

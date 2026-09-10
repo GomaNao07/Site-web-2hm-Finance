@@ -1,10 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import ImageSlot from '../components/ImageSlot';
 
 export default function Formation() {
+  const formationJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation Gestion Financière & Contrôle de Gestion Pétrolier (AFRIKAN CAMPUS)",
+      "description": "Formations professionnelles intra-entreprise et AFRIKAN CAMPUS : contrat de partage de production (CPP), Cost Recovery et contrôles de gestion pétroliers.",
+      "provider": {
+        "@type": "Organization",
+        "name": "2HM Finance & AFRIKAN CAMPUS",
+        "url": "https://2hmfinance.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://2hmfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Formation",
+          "item": "https://2hmfinance.com/formation"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#FAF7F9]">
+      <SEO
+        title="Formation Financial & CPP Pétrolier | 2HM Finance"
+        description="Formations professionnelles intra-entreprise et AFRIKAN CAMPUS : contrats de partage de production, Cost Oil et contrôle de gestion pétrolier."
+        canonical="https://2hmfinance.com/formation"
+        ogType="article"
+        jsonLd={formationJsonLd}
+      />
       
       {/* SECTION: FORMATION PROFESSIONNELLE */}
       <section className="bg-white py-16 md:py-24 text-[#1A1418]">
@@ -39,6 +79,7 @@ export default function Formation() {
             <ImageSlot 
               refCode="IMG-05" 
               heightClass="min-h-[360px]"
+              alt="Atelier de formation professionnelle en ingénierie financière pétrolière - 2HM Finance & Afrikan Campus"
               brief="Photographie de session : formateur devant un groupe, ou plan rapproché de participants prenant des notes sur un cas chiffré. Privilégier une vraie session plutôt qu'une mise en scène."
             />
           </div>

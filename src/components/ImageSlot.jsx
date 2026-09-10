@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 /**
  * @typedef {Object} ImageSlotProps
  * @property {string} [refCode] - Code de référence affiché en haut à gauche (ex: "REF-01").
@@ -9,6 +8,7 @@ import React, { useState, useEffect } from 'react';
  * @property {string} [imageSrc] - URL d'une image unique (alternative à `url` et `images`).
  * @property {string | string[]} [url] - URL d'une image unique ou tableau d'URLs pour le diaporama.
  * @property {string[]} [images] - Tableau d'URLs d'images pour le diaporama (prioritaire).
+ * @property {string} [alt] - Texte alternatif descriptif pour l'accessibilité et le SEO.
  * @property {number} [interval=4000] - Intervalle de défilement automatique des images en millisecondes.
  */
 
@@ -25,14 +25,17 @@ export default function ImageSlot({
   imageSrc,
   url,
   images,
+  alt,
   interval = 4000
-},) {
+}) {
   // Support single image or array of images passed via images, url, or imageSrc
   const imageList = Array.isArray(images)
     ? images
     : (Array.isArray(url) ? url : (imageSrc || url ? [imageSrc || url] : []));
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const altText = alt || (typeof brief === 'string' ? brief : (refCode ? `Illustration ${refCode} - 2HM Finance` : '2HM Finance Illustration'));
 
   useEffect(() => {
     if (imageList.length <= 1) return;
@@ -46,30 +49,33 @@ export default function ImageSlot({
 
   return (
     <div
-      className={`relative border border-[#862586]/45 bg-[#3C1240] ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-[2px] overflow-hidden group`}
+      role="img"
+      aria-label={altText}
+      className={`relative bg-[#3C1240] ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-[2px] overflow-hidden group`}
     >
       {/* Background Images for Slideshow */}
       {imageList.length > 0 && (
         imageList.map((img, index) => (
-          <div
-            key={index}
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
-            style={{
-              backgroundImage: `url(${img})`,
-              opacity: index === currentIndex ? 1 : 0,
-            }}
-          />
+          <React.Fragment key={index}>
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
+              style={{
+                backgroundImage: `url(${img})`,
+                opacity: index === currentIndex ? 1 : 0,
+              }}
+            />
+            {/* Hidden HTML <img> tag for search engine indexing */}
+            <img
+              src={img}
+              alt={`${altText} - Vue ${index + 1}`}
+              loading={index === 0 ? "eager" : "lazy"}
+              className="sr-only"
+            />
+          </React.Fragment>
         ))
       )}
 
-      {/* Bichromie overlay gradient */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
-        style={{
-          background: 'linear-gradient(150deg, rgba(134,37,134,0.2), rgba(26,4,28,0.6))',
-          mixBlendMode: 'multiply'
-        }}
-      />
+
 
       {/* Header: Ref Code Tag & Slideshow Indicators */}
       <div className="absolute top-[18px] left-[22px] right-[22px] z-[3] flex items-center justify-between pointer-events-none">
@@ -106,3 +112,4 @@ export default function ImageSlot({
     </div>
   );
 }
+

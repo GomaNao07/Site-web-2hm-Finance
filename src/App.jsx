@@ -12,6 +12,8 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Maintenance from './pages/Maintenance';
 
+const IS_MAINTENANCE_MODE = false;
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
@@ -25,6 +27,21 @@ function ScrollToTop() {
 }
 
 function App() {
+  if (IS_MAINTENANCE_MODE) {
+    return (
+      <Router>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen font-corps bg-[#2A0B2C] text-[#F3E6F3]">
+          <main className="flex-1 flex flex-col justify-center">
+            <Routes>
+              <Route path="*" element={<Maintenance />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    );
+  }
+
   return (
     <Router>
       <ScrollToTop />
@@ -38,16 +55,15 @@ function App() {
             <Route path="/notre-methode" element={<Methode />} />
             <Route path="/formation" element={<Formation />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/maintenance" element={<Maintenance />} />
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
-        <AiChatDrawer />
+        {/* <AiChatDrawer /> */}
       </div>
     </Router>
   );
 }
 
 export default App;
+
