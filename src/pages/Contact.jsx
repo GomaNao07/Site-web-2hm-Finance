@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Mail, Globe, MapPin } from 'lucide-react';
 import SEO from '../components/SEO';
 import Toast from '../components/Toast';
+
+const OFFICE_LATITUDE = -4.7966762;
+const OFFICE_LONGITUDE = 11.8619983;
+const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${OFFICE_LATITUDE},${OFFICE_LONGITUDE}`;
+const LINKEDIN_URL = "https://www.linkedin.com/company/2hm-finance/";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -33,7 +39,7 @@ export default function Contact() {
         "email": "hhonvo@2hmfinance.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "106, rue Benoît louembet, Km4",
+          "streetAddress": "106, rue Benoît loembet, Km4",
           "addressLocality": "Pointe-Noire",
           "addressCountry": "CG"
         }
@@ -166,11 +172,19 @@ export default function Contact() {
             <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Bureau opérationnel
             </h2>
-            <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
-              106, rue Benoît louembet<br />
-              Km4 — Pointe-Noire<br />
-              République du Congo
-            </p>
+            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l'adresse du bureau dans Google Maps (nouvel onglet)" className="group block">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-5 h-5 shrink-0 mt-1 text-[#EAD8EA] group-hover:text-white transition-colors" />
+                <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed group-hover:text-white transition-colors">
+                  106, rue Benoît louembet<br />
+                  Km4 — Pointe-Noire<br />
+                  République du Congo
+                </p>
+              </div>
+              <span className="mt-2 inline-block text-xs font-mono uppercase tracking-wide text-[#E8A33D] group-hover:underline">
+                Voir sur Google Maps →
+              </span>
+            </a>
           </div>
 
 
@@ -178,27 +192,33 @@ export default function Contact() {
             <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Téléphone
             </h2>
-            <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
-              <a href="tel:+242055179230" className="text-white hover:underline border-b border-white/35 pb-0.5">
-                +242 05 517 92 30
-              </a>
-              <br />
-              <span className="text-sm text-[#C9A8C9]">Du lundi au vendredi, 8h – 17h</span>
-            </p>
+            <a href="tel:+242055179230" className="flex items-center gap-2 w-fit text-white hover:underline">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 fill-current" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.36.101 11.943c0 2.105.549 4.159 1.595 5.968L0 24l6.235-1.634a11.94 11.94 0 005.71 1.454h.005c6.585 0 11.946-5.359 11.949-11.943a11.874 11.874 0 00-3.379-8.428" />
+              </svg>
+              <span className="text-[17px] border-b border-white/35 pb-0.5">+242 05 517 92 30</span>
+            </a>
+            <p className="m-0 mt-2 text-sm text-[#C9A8C9]">Du lundi au vendredi, 8h – 17h</p>
           </div>
 
           <div className=" p-8 ">
             <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Courriel &amp; Web
             </h2>
-            <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
-              <a href="mailto:hhonvo@2hmfinance.com" className="text-white hover:underline   pb-0.5 block mb-1">
-                hhonvo@2hmfinance.com
-              </a>
-              <Link to="/" className="text-[#E8A33D] hover:underline">
-                www.2hmfinance.com
-              </Link>
-            </p>
+            <a href="mailto:hhonvo@2hmfinance.com" className="flex items-center gap-2 w-fit text-white hover:underline mb-2">
+              <Mail className="w-5 h-5 shrink-0" />
+              <span className="text-[17px]">hhonvo@2hmfinance.com</span>
+            </a>
+            <Link to="/" className="flex items-center gap-2 w-fit text-[#E8A33D] hover:underline">
+              <Globe className="w-5 h-5 shrink-0" />
+              <span className="text-[17px]">www.2hmfinance.com</span>
+            </Link>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Voir 2HM Finance sur LinkedIn" className="mt-4 inline-flex items-center gap-2 text-[#EAD8EA] hover:text-white transition-colors">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <span className="text-sm font-mono uppercase tracking-wide">LinkedIn</span>
+            </a>
           </div>
         </div>
 
