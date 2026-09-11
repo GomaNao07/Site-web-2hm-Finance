@@ -1,4 +1,4 @@
-# 🚀 Déploiement Automatique via GitHub Actions — 2HM Finance
+# Déploiement Automatique via GitHub Actions — 2HM Finance
 
 Ce guide explique comment déployer automatiquement le site **2HM Finance** sur l'hébergement **LWS** à chaque push sur la branche `main`, sans aucune manipulation FTP manuelle.
 

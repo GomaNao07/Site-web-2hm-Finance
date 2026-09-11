@@ -51,7 +51,7 @@ export default function ImageSlot({
     <div
       role="img"
       aria-label={altText}
-      className={`relative bg-[#3C1240] ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-[2px] overflow-hidden group`}
+      className={`relative bg-[#3C1240] ${heightClass} flex flex-col justify-end p-[22px] gap-2 rounded-md overflow-hidden group`}
     >
       {/* Background Images for Slideshow */}
       {imageList.length > 0 && (

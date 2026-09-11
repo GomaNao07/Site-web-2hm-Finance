@@ -150,7 +150,7 @@ export default function Contact() {
       <div className="max-w-[1100px] mx-auto px-7">
 
         {/* HEADER */}
-        <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
+        <p className="font-mono text-[11.5px] tracking-[0.16em]  text-[#E8A33D] mb-[18px]">
           Contact
         </p>
         <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white max-w-[16ch] leading-[1.06] tracking-[-0.02em]">
@@ -161,9 +161,9 @@ export default function Contact() {
         </p>
 
         {/* CONTACT GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 bg-white/20 mt-11">
-          <div className="bg-[#2A0B2C] p-8">
-            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0.5 mt-11 rounded-2xl bg-black/22 hoverflow-hidden">
+          <div className=" p-8">
+            <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Bureau opérationnel
             </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
@@ -174,8 +174,8 @@ export default function Contact() {
           </div>
 
 
-          <div className="bg-[#2A0B2C] p-8">
-            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
+          <div className=" p-8">
+            <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Téléphone
             </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
@@ -187,8 +187,8 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="bg-[#2A0B2C] p-8 sm:col-span-2">
-            <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-3 font-normal">
+          <div className=" p-8 ">
+            <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-3 font-normal">
               Courriel &amp; Web
             </h2>
             <p className="m-0 text-[17px] text-[#EAD8EA] leading-relaxed">
@@ -203,8 +203,8 @@ export default function Contact() {
         </div>
 
         {/* INTERACTIVE FORM */}
-        <div className="mt-12 bg-white/6 border border-white/18 p-8 md:p-10">
-          <h2 className="font-mono text-xs text-[#E8A33D] uppercase tracking-widest block mb-6 font-semibold">
+        <div className="mt-12 bg-white border border-gray-200 p-8 md:p-10 rounded-md">
+          <h2 className="font-mono text-xs text-[#E8A33D]  tracking-widest block mb-6 font-semibold">
             Formulaire de contact
           </h2>
 
@@ -232,7 +232,7 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                <label className="block text-xs font-mono  text-gray-700 mb-2">
                   Nom et prénom <span className="text-[#E8A33D]">*</span>
                 </label>
                 <input
@@ -242,12 +242,12 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Votre nom complet"
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                <label className="block text-xs font-mono  text-gray-700 mb-2">
                   Société <span className="text-[#E8A33D]">*</span>
                 </label>
                 <input
@@ -257,14 +257,14 @@ export default function Contact() {
                   value={formData.company}
                   onChange={handleChange}
                   placeholder="Nom de votre entreprise"
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                <label className="block text-xs font-mono  text-gray-700 mb-2">
                   Fonction
                 </label>
                 <input
@@ -273,12 +273,12 @@ export default function Contact() {
                   value={formData.jobTitle}
                   onChange={handleChange}
                   placeholder="Ex: Directeur Financier"
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                <label className="block text-xs font-mono  text-gray-700 mb-2">
                   Adresse email professionnelle <span className="text-[#E8A33D]">*</span>
                 </label>
                 <input
@@ -288,12 +288,12 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="nom@entreprise.com"
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+                <label className="block text-xs font-mono  text-gray-700 mb-2">
                   Téléphone
                 </label>
                 <input
@@ -302,20 +302,20 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+242..."
-                  className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+              <label className="block text-xs font-mono  text-gray-700 mb-2">
                 Objet de la demande
               </label>
               <select
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white focus:outline-none focus:border-[#E8A33D]"
+                className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
               >
                 <option value="diagnostic">Diagnostic de coûts (5 jours)</option>
                 <option value="gouvernance">Gouvernance financière de projet</option>
@@ -327,7 +327,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono uppercase text-[#EAD8EA] mb-2">
+              <label className="block text-xs font-mono  text-gray-700 mb-2">
                 Votre message <span className="text-[#E8A33D]">*</span>
               </label>
               <textarea
@@ -337,7 +337,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Décrivez votre besoin ou votre situation..."
-                className="w-full bg-[#1A061C] border border-white/20 rounded-[2px] px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E8A33D]"
+                className="w-full bg-gray-50 border border-gray-300 rounded-[2px] px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#E8A33D] focus:ring-1 focus:ring-[#E8A33D]"
               />
             </div>
 
@@ -351,8 +351,14 @@ export default function Contact() {
                 onChange={handleChange}
                 className="mt-1 accent-[#E8A33D] cursor-pointer"
               />
-              <label htmlFor="consent" className="text-xs text-[#C9A8C9] leading-relaxed cursor-pointer">
-                J'accepte que les informations saisies soient traitées par 2HM.FINANCE dans le cadre de ma demande de contact et de la relation commerciale qui peut en découler.
+
+              <label
+                htmlFor="consent"
+                className="text-xs text-gray-600 leading-relaxed cursor-pointer"
+              >
+                J'accepte que les informations saisies soient traitées par 2HM.FINANCE
+                dans le cadre de ma demande de contact et de la relation commerciale
+                qui peut en découler.
               </label>
             </div>
 
@@ -367,7 +373,6 @@ export default function Contact() {
             </div>
 
           </form>
-
         </div>
 
       </div>

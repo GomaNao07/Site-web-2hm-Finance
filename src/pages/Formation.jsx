@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ImageSlot from '../components/ImageSlot';
+import image_1 from '../assets/cabinet/image_1.jpeg'
 
 export default function Formation() {
   const formationJsonLd = [
@@ -45,7 +46,7 @@ export default function Formation() {
         ogType="article"
         jsonLd={formationJsonLd}
       />
-      
+
       {/* SECTION: FORMATION PROFESSIONNELLE */}
       <section className="bg-white py-16 md:py-24 text-[#1A1418]">
         <div className="max-w-[1100px] mx-auto px-7">
@@ -76,11 +77,11 @@ export default function Formation() {
               </div>
             </div>
 
-            <ImageSlot 
-              refCode="IMG-05" 
+            <ImageSlot
+              refCode=""
+              imageSrc={image_1}
               heightClass="min-h-[360px]"
               alt="Atelier de formation professionnelle en ingénierie financière pétrolière - 2HM Finance & Afrikan Campus"
-              brief="Photographie de session : formateur devant un groupe, ou plan rapproché de participants prenant des notes sur un cas chiffré. Privilégier une vraie session plutôt qu'une mise en scène."
             />
           </div>
         </div>
@@ -132,8 +133,8 @@ export default function Formation() {
           </div>
 
           <div className="mt-8">
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="inline-block font-display font-semibold text-[15px] px-7 py-3.5 bg-[#862586] text-white rounded-[2px] hover:bg-[#5C1560] transition-colors"
             >
               Demander le programme détaillé

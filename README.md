@@ -1,6 +1,6 @@
 # 🎨 2HM.FINANCE — Charte Graphique & Palette de Couleurs Hexadécimales
 
-Ce document présente la charte graphique et l'intégralité des **couleurs hexadécimales** utilisées sur le site web **2HM.FINANCE** (Ingénierie financière & contrôle de gestion — Zone CEMAC).
+Ce document présente la charte graphique et l'intégralité des **couleurs hexadécimales** utilisées sur le site web **2HM.FINANCE** (Ingénierie financière & contrôle de gestion — Zone CEMAC / ).
 
 ---
 

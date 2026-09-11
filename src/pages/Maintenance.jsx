@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
-import logoImg from '../assets/Translucent_logo.png';
+import logoImg from '../assets/icon.png';
 
 export default function Maintenance() {
   return (

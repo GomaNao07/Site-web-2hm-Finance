@@ -23,7 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 bg-[#2A0B2C] backdrop-blur-3xl text-[#F3E6F3] shadow-md font-mono text-[11px] tracking-[0.1em] uppercase">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-[#2A0B2C] backdrop-blur-3xl text-[#F3E6F3] font-mono text-[11px] tracking-[0.1em] uppercase">
       <div className="max-w-[1100px] mx-auto px-7 flex items-center justify-between">
 
         {/* Brand */}

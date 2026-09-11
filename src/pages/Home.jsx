@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ImageSlot from '../components/ImageSlot';
 import img_1 from '../assets/persons/img_1.jpeg';
+import logo from '../assets/icon.png';
 import platform_1 from '../assets/platforms/platform_1.jpeg';
 import platform_2 from '../assets/platforms/platform_2.jpeg';
 import platform_3 from '../assets/platforms/platform_3.jpeg';
@@ -57,11 +58,10 @@ export default function Home() {
       />
 
       {/* HERO SECTION */}
-      <section className="bg-[#2A0B2C] text-[#FBF4FB] relative overflow-hidden">
+      <section className="bg-[#2A0B2C]  text-[#FBF4FB] relative overflow-hidden">
         <div
           className="absolute inset-0 z-0 opacity-55 w-full h-full object-cover pointer-events-none"
         >
-
           <ImageSlot
             refCode="IMG-01"
             images={[platform_1, platform_2, platform_3]}
@@ -72,44 +72,53 @@ export default function Home() {
 
         </div>
         <div
-          className="absolute inset-0 z-1 pointer-events-none transition-opacity duration-300"
+          className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: 'linear-gradient(150deg, rgba(134,37,134,.5), rgba(26,4,28,.5))',
+            background: 'linear-gradient(150deg, rgba(134,37,134,.9), rgba(26,4,28,.9))',
             mixBlendMode: 'multiply'
           }}
         />
-
-        <div className="max-w-[1100px] mx-auto px-7 relative z-10 pt-20 pb-20 md:pt-24 md:pb-22">
-          <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
-            Ingénierie financière &amp; contrôle de gestion — Zone CEMAC
-          </p>
-
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-[68px] leading-[1.06] tracking-[-0.02em] text-white max-w-[17ch]">
-            Le prix du baril, vous le subissez. Vos coûts, vous les maîtrisez.
-          </h1>
-
-          <p className="font-corps text-xl sm:text-2xl text-[#DFC6DF] leading-[1.5] max-w-[52ch] mt-6 font-light">
-            2HM.FINANCE accompagne les opérateurs, contractants et sous-traitants de l'amont pétrolier dans le contrôle de leurs coûts, la gouvernance financière de leurs projets et l'optimisation de la rente qu'ils partagent avec l'État.
-          </p>
-
-          <div className="flex flex-wrap gap-3.5 mt-9">
-            <Link
-              to="/contact"
-              className="font-display font-semibold text-[15px] px-6 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors"
+        <div className="flex max-w-5xl mx-auto relative z-10">
+          <div className=" px-7   pt-20 pb-20 md:pt-24 md:pb-22 ">
+            <p className="font-mono text-[11.5px] tracking-[0.16em] text-bold text-[#E8A33D] uppercase mb-[18px] py-2 px-4 backdrop-blur-xl"
+              style={{ background: ' rgba(26, 4, 28, 0.52)' }}
             >
-              Demander un diagnostic
-            </Link>
-            <Link
-              to="/nos-expertises"
-              className="font-display font-semibold text-[15px] px-6 py-3.5 border border-white/40 text-white rounded-[2px] hover:border-white hover:bg-white/10 transition-colors"
-            >
-              Voir nos expertises
-            </Link>
+              Ingénierie financière &amp; contrôle de gestion — Zone CEMAC / OHADA
+            </p>
+
+            <h1 className="font-display font-extrabold text-xl sm:text-5xl  leading-[1.06] tracking-[-0.02em] text-white max-w-[17ch]">
+              Le prix du baril, vous le subissez. Vos coûts, vous les maîtrisez.
+            </h1>
+
+            <p className="font-corps text-md sm:text-xl text- [#DFC6DF] leading-[1.5] max-w-[52ch] mt-6 font-light">
+              2HM.FINANCE accompagne les opérateurs, contractants et sous-traitants de l'amont pétrolier dans le contrôle de leurs coûts, la gouvernance financière de leurs projets et l'optimisation de la rente qu'ils partagent avec l'État.
+            </p>
+
+            <div className="flex flex-wrap gap-3.5 mt-9">
+              <Link
+                to="/contact"
+                className="font-display font-semibold text-[15px] px-6 py-3.5 bg-[#E8A33D] text-[#2A0B2C] rounded-[2px] hover:bg-[#F4B85C] transition-colors"
+              >
+                Demander un diagnostic
+              </Link>
+              <Link
+                to="/nos-expertises"
+                className="font-display font-semibold text-[15px] px-6 py-3.5 border border-white/40 text-white rounded-[2px] hover:border-white hover:bg-white/10 transition-colors"
+              >
+                Voir nos expertises
+              </Link>
+            </div>
+
+            <p className="mt-[52px] pt-[22px] border-t border-white/18 font-display font-bold text-lg md:text-[21px] text-white">
+              Prix subi, <em className="not-italic text-[#E8A33D]">coût maîtrisé.</em>
+            </p>
           </div>
-
-          <p className="mt-[52px] pt-[22px] border-t border-white/18 font-display font-bold text-lg md:text-[21px] text-white">
-            Prix subi, <em className="not-italic text-[#E8A33D]">coût maîtrisé.</em>
-          </p>
+          <div className='h-full flex items-center mt-30'>
+            <img
+              src={logo}
+              className="w-90"
+            />
+          </div>
         </div>
       </section>
 
@@ -310,7 +319,7 @@ export default function Home() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#1A1418] mb-1">
               Hervé HONVO
             </h2>
-            <p className="font-mono text-[15px] font-bold text-black tracking-[0.04em] mb-5">
+            <p className="font-display text-[15px] font-bold text-black track ing-[0.04em] mb-5">
               Associé-Gérant · 2HM.FINANCE
             </p>
             <p className="text-[17.5px] text-[#3A2E38] leading-relaxed mb-4">
