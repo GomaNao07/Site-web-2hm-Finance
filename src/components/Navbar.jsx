@@ -28,7 +28,7 @@ export default function Navbar() {
 
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 text-white text-sm font-display font-extrabold tracking-wide hover:opacity-90 transition-opacity">
-          <img src={logoImg} alt="2HM Finance Logo" className="h-10 w-auto object-contain " />
+          <img src={logoImg} alt="2HM Finance Logo" className="md:h- 10 h-14 w-auto object-contain " />
         </Link>
 
         {/* Desktop Nav */}
@@ -55,16 +55,16 @@ export default function Navbar() {
           >
             Diagnostic 5 jours
           </Link>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-1.5 text-[#E7C8E7] hover:text-white"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
 
         {/* Mobile menu toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-1.5 text-[#E7C8E7] hover:text-white"
-          aria-label="Toggle Menu"
-        >
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
 
       </div>
 

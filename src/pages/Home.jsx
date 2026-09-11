@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ImageSlot from '../components/ImageSlot';
 import img_1 from '../assets/persons/img_1.jpeg';
-import logo from '../assets/icon.png';
+import logo from '../assets/logos/logo_1.jpeg';
 import platform_1 from '../assets/platforms/platform_1.jpeg';
 import platform_2 from '../assets/platforms/platform_2.jpeg';
 import platform_3 from '../assets/platforms/platform_3.jpeg';
-
+import illustration from '../assets/calculator.jpg';
 export default function Home() {
   const homeJsonLd = [
     {
@@ -78,7 +78,7 @@ export default function Home() {
             mixBlendMode: 'multiply'
           }}
         />
-        <div className="flex max-w-5xl mx-auto relative z-10">
+        <div className="md:flex md:text-left text-center justify-between max-w-5xl mx-auto relative z-10">
           <div className=" px-7   pt-20 pb-20 md:pt-24 md:pb-22 ">
             <p className="font-mono text-[11.5px] tracking-[0.16em] text-bold text-[#E8A33D] uppercase mb-[18px] py-2 px-4 backdrop-blur-xl"
               style={{ background: ' rgba(26, 4, 28, 0.52)' }}
@@ -86,7 +86,7 @@ export default function Home() {
               Ingénierie financière &amp; contrôle de gestion — Zone CEMAC / OHADA
             </p>
 
-            <h1 className="font-display font-extrabold text-xl sm:text-5xl  leading-[1.06] tracking-[-0.02em] text-white max-w-[17ch]">
+            <h1 className="font-display font-extrabold text-4xl sm:text-5xl  leading-[1.06] tracking-[-0.02em] text-white max-w-[17ch]">
               Le prix du baril, vous le subissez. Vos coûts, vous les maîtrisez.
             </h1>
 
@@ -113,10 +113,10 @@ export default function Home() {
               Prix subi, <em className="not-italic text-[#E8A33D]">coût maîtrisé.</em>
             </p>
           </div>
-          <div className='h-full flex items-center mt-30'>
+          <div className='h-full hidden md:flex items-center mt-60'>
             <img
               src={logo}
-              className="w-90"
+              className=" md:w-70 rounded-md"
             />
           </div>
         </div>
@@ -205,52 +205,62 @@ export default function Home() {
 
 
       {/* SECTION: NOTRE THÈSE (JAUGE DE COÛT) */}
-      <section className="bg-[#2A0B2C] text-[#F3E6F3] py-16 md:py-20">
-        <div className="max-w-[1100px] mx-auto px-7">
-          <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
-            Notre thèse
-          </p>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white max-w-[22ch] leading-[1.06]">
-            Maîtriser le coût, ce n'est pas dépenser moins. C'est recouvrer davantage.
-          </h2>
-          <p className="font-corps text-xl text-[#D9BFD9] font-light max-w-[56ch] mt-6">
-            Nous avons établi et vérifié le coefficient de perte nette qui mesure ce qu'un coût requalifié retire réellement au contractant, une fois déroulés les effets de partage de production et d'impôt.
-          </p>
-
-          {/* Jauge box */}
-          <div className="mt-11 bg-black/22 border border-white/16 p-6 sm:p-8">
-            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#E8A33D] mb-6">
-              Effet d'une requalification de 12 M USD de coûts
+      <section className="bg-[#2A0B2C] text-[#F3E6F3] ">
+        <section className="md:flex flex-row in max-w-[1100px] mx-auto items-end">
+          <div className="px-7 py-16 md:py-20 ">
+            <p className="font-mono text-[11.5px] tracking-[0.16em] uppercase text-[#E8A33D] mb-[18px]">
+              Notre thèse
+            </p>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white max-w-[22ch] leading-[1.06]">
+              Maîtriser le coût, ce n'est pas dépenser moins. C'est recouvrer davantage.
+            </h2>
+            <p className="font-corps text-xl text-[#D9BFD9] font-light max-w-[56ch] mt-6">
+              Nous avons établi et vérifié le coefficient de perte nette qui mesure ce qu'un coût requalifié retire réellement au contractant, une fois déroulés les effets de partage de production et d'impôt.
             </p>
 
-            {/* Visual Bar */}
-            <div className="relative h-16 bg-white/9 flex items-stretch rounded-[1px] overflow-hidden">
-              <div className="bg-[#E8A33D] text-[#2A0B2C] w-[70.75%] flex items-center px-4 font-mono text-xs tracking-[0.03em] font-semibold">
-                8,49 M USD supportés en net par le contractant
+            {/* Jauge box */}
+            <div className="mt-11 bg-black/22 border border-white/16 p-6 sm:p-8 hidden" >
+              <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#E8A33D] mb-6">
+                Effet d'une requalification de 12 M USD de coûts
+              </p>
+
+              {/* Visual Bar */}
+              <div className="relative h-16 bg-white/9 flex items-stretch rounded-[1px] overflow-hidden">
+                <div className="bg-[#E8A33D] text-[#2A0B2C] w-[70.75%] flex items-center px-4 font-mono text-xs tracking-[0.03em] font-semibold">
+                  8,49 M USD supportés en net par le contractant
+                </div>
+                <div className="text-[#C9A8C9] flex-1 flex items-center justify-end px-4 font-mono text-xs tracking-[0.03em]">
+                  3,51 M USD absorbés par le partage
+                </div>
               </div>
-              <div className="text-[#C9A8C9] flex-1 flex items-center justify-end px-4 font-mono text-xs tracking-[0.03em]">
-                3,51 M USD absorbés par le partage
+
+              {/* Legend */}
+              <div className="flex flex-wrap justify-between gap-5 mt-4 font-mono text-[11.5px] text-[#C9A8C9] tracking-[0.03em]">
+                <span>Coûts requalifiés : 12,00 M USD</span>
+                <span>Perte nette : 8,49 M USD</span>
+                <span>Équivalent : baisse de 10 % du Brent</span>
               </div>
+
+              {/* Formula */}
+              <p className="mt-6 pt-5 border-t border-white/14 font-mono text-sm text-white">
+                &kappa; = 1 &minus; s(1 &minus; t) = <b className="text-[#E8A33D] font-semibold">0,7075</b>
+              </p>
+
+              {/* Note */}
+              <p className="text-[15.5px] text-[#D9BFD9] max-w-[60ch] mt-3.5 font-corps font-light leading-relaxed">
+                Autrement dit : chaque dollar refusé au Cost Oil ne coûte pas un dollar au contractant, il en coûte 0,7075. Sur un dossier de 12 millions, la sanction équivaut à un choc de marché que personne n'accepterait sans réagir — sauf qu'ici, elle est évitable.
+              </p>
             </div>
-
-            {/* Legend */}
-            <div className="flex flex-wrap justify-between gap-5 mt-4 font-mono text-[11.5px] text-[#C9A8C9] tracking-[0.03em]">
-              <span>Coûts requalifiés : 12,00 M USD</span>
-              <span>Perte nette : 8,49 M USD</span>
-              <span>Équivalent : baisse de 10 % du Brent</span>
-            </div>
-
-            {/* Formula */}
-            <p className="mt-6 pt-5 border-t border-white/14 font-mono text-sm text-white">
-              &kappa; = 1 &minus; s(1 &minus; t) = <b className="text-[#E8A33D] font-semibold">0,7075</b>
-            </p>
-
-            {/* Note */}
-            <p className="text-[15.5px] text-[#D9BFD9] max-w-[60ch] mt-3.5 font-corps font-light leading-relaxed">
-              Autrement dit : chaque dollar refusé au Cost Oil ne coûte pas un dollar au contractant, il en coûte 0,7075. Sur un dossier de 12 millions, la sanction équivaut à un choc de marché que personne n'accepterait sans réagir — sauf qu'ici, elle est évitable.
-            </p>
           </div>
-        </div>
+          <div className="md:ml-20 ">
+
+            <img
+              src={illustration}
+              height={300}
+              className='aspect-stresh mr'
+            />
+          </div>
+        </section>
       </section>
 
 
